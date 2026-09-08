@@ -1,0 +1,117 @@
+{
+  "info": {
+    "name": "Project 1 - Maintenance Requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create maintenance request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Fuga de agua en cocina\",\n  \"description\": \"Se observa una fuga continua debajo del fregadero de la cocina principal.\",\n  \"requesterName\": \"Ana García\",\n  \"requesterEmail\": \"ana.garcia@empresa.com\",\n  \"location\": \"Edificio A - Planta 2 - Cocina\",\n  \"category\": \"PLUMBING\",\n  \"priority\": \"HIGH\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/maintenance-requests",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "maintenance-requests"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List maintenance requests",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/maintenance-requests",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "maintenance-requests"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get maintenance request by ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/maintenance-requests/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "maintenance-requests",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update maintenance request",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Fuga de agua reparada parcialmente\",\n  \"description\": \"La fuga se ha reducido, pero sigue siendo necesaria una revisión completa de la instalación.\",\n  \"requesterName\": \"Ana García\",\n  \"requesterEmail\": \"ana.garcia@empresa.com\",\n  \"location\": \"Edificio A - Planta 2 - Cocina\",\n  \"category\": \"PLUMBING\",\n  \"priority\": \"MEDIUM\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/maintenance-requests/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "maintenance-requests",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete maintenance request",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/api/maintenance-requests/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "maintenance-requests",
+            "1"
+          ]
+        }
+      }
+    }
+  ]
+}

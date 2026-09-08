@@ -1,0 +1,310 @@
+{
+  "info": {
+    "name": "Project 5 - Equipment Rental",
+    "_postman_id": "project-05-equipment-rental",
+    "description": "Module 1 final integrator project.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create reservation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"equipmentCode\": \"cam-001\",\n  \"equipmentName\": \"Sony FX3\",\n  \"equipmentType\": \"CAMERA\",\n  \"customerName\": \"Producciones Sur\",\n  \"startDate\": \"2026-10-01\",\n  \"expectedReturnDate\": \"2026-10-04\",\n  \"dailyRate\": 40.0,\n  \"status\": \"RETURNED\",\n  \"estimatedCost\": 1,\n  \"finalCost\": 1\n}"
+        }
+      }
+    },
+    {
+      "name": "Get all",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update reserved contract",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "1"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"equipmentCode\": \"cam-001\",\n  \"equipmentName\": \"Sony FX3\",\n  \"equipmentType\": \"CAMERA\",\n  \"customerName\": \"Producciones Andalucía\",\n  \"startDate\": \"2026-10-01\",\n  \"expectedReturnDate\": \"2026-10-04\",\n  \"dailyRate\": 45.0,\n  \"status\": \"RETURNED\",\n  \"estimatedCost\": 1,\n  \"finalCost\": 1\n}"
+        }
+      }
+    },
+    {
+      "name": "Activate",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/1/activate",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "1",
+            "activate"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cancel",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/1/cancel",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "1",
+            "cancel"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Return",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/1/return?returnDate=2026-10-04",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "1",
+            "return"
+          ]
+        }
+      }
+    },
+    {
+      "name": "By status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/status/ACTIVE",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "status",
+            "ACTIVE"
+          ]
+        }
+      }
+    },
+    {
+      "name": "By equipment",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/equipment/CAM-001",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "equipment",
+            "CAM-001"
+          ]
+        }
+      }
+    },
+    {
+      "name": "By type",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/type/CAMERA",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "type",
+            "CAMERA"
+          ]
+        }
+      }
+    },
+    {
+      "name": "By customer",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/customer/producciones",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "customer",
+            "producciones"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Overdue",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/overdue",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "overdue"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Availability",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/availability?equipmentCode=CAM-001&startDate=2026-10-10&endDate=2026-10-15",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "availability"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Summary report",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/reports/summary",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "reports",
+            "summary"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/rentals/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rentals",
+            "1"
+          ]
+        }
+      }
+    }
+  ]
+}

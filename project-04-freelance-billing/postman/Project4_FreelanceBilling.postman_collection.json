@@ -1,0 +1,215 @@
+{
+  "info": {
+    "name": "Project 4 - Freelance Billing",
+    "_postman_id": "project4-freelance-billing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/billing-records",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "billing-records"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clientName\": \"Acme Consulting\",\n  \"projectCode\": \"web-2026\",\n  \"serviceCategory\": \"DEVELOPMENT\",\n  \"workDate\": \"2026-09-01\",\n  \"hoursWorked\": 8,\n  \"hourlyRate\": 50.0,\n  \"discountPercent\": 10,\n  \"taxPercent\": 21,\n  \"totalAmount\": 1\n}"
+        }
+      }
+    },
+    {
+      "name": "Get all",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/billing-records",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "billing-records"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/billing-records/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "billing-records",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/billing-records/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "billing-records",
+            "1"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clientName\": \"Acme Consulting\",\n  \"projectCode\": \"web-2026\",\n  \"serviceCategory\": \"DEVELOPMENT\",\n  \"workDate\": \"2026-09-01\",\n  \"hoursWorked\": 9.5,\n  \"hourlyRate\": 50.0,\n  \"discountPercent\": 10,\n  \"taxPercent\": 21,\n  \"totalAmount\": 99999\n}"
+        }
+      }
+    },
+    {
+      "name": "By client",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/billing-records/client/acme",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "billing-records",
+            "client",
+            "acme"
+          ]
+        }
+      }
+    },
+    {
+      "name": "By category",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/billing-records/category/DEVELOPMENT",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "billing-records",
+            "category",
+            "DEVELOPMENT"
+          ]
+        }
+      }
+    },
+    {
+      "name": "By project",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/billing-records/project/web-2026",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "billing-records",
+            "project",
+            "web-2026"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Between dates",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/billing-records/between?startDate=2026-09-01&endDate=2026-09-30",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "billing-records",
+            "between"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Revenue report",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/billing-records/reports/revenue?startDate=2026-09-01&endDate=2026-09-30",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "billing-records",
+            "reports",
+            "revenue"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/billing-records/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "billing-records",
+            "1"
+          ]
+        }
+      }
+    }
+  ]
+}

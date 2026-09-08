@@ -1,0 +1,191 @@
+{
+  "info": {
+    "name": "Project 3 - Vehicle Service History",
+    "description": "Colección base para probar el Proyecto 3 del Módulo 1.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "recordId",
+      "value": "1"
+    },
+    {
+      "key": "vehiclePlate",
+      "value": "1234ABC"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - Crear mantenimiento",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/service-records",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vehiclePlate\": \"1234abc\",\n  \"serviceType\": \"OIL_CHANGE\",\n  \"serviceDate\": \"2026-09-01\",\n  \"mileage\": 84500,\n  \"workshopName\": \"Motor Sur\",\n  \"notes\": \"Aceite y filtro sustituidos\",\n  \"nextServiceDate\": \"2027-03-01\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "02 - Listar todos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/service-records",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": []
+        }
+      }
+    },
+    {
+      "name": "03 - Obtener por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/service-records/{{recordId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": []
+        }
+      }
+    },
+    {
+      "name": "04 - Actualizar",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/service-records/{{recordId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vehiclePlate\": \"1234ABC\",\n  \"serviceType\": \"INSPECTION\",\n  \"serviceDate\": \"2026-09-02\",\n  \"mileage\": 84620,\n  \"workshopName\": \"Motor Sur\",\n  \"notes\": \"Revisión general\",\n  \"nextServiceDate\": \"2027-03-02\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "05 - Filtrar por vehículo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/service-records/vehicle/{{vehiclePlate}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": []
+        }
+      }
+    },
+    {
+      "name": "06 - Filtrar por tipo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/service-records/type/OIL_CHANGE",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": []
+        }
+      }
+    },
+    {
+      "name": "07 - Filtrar entre fechas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/service-records/between?startDate=2026-01-01&endDate=2026-09-30",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": []
+        }
+      }
+    },
+    {
+      "name": "08 - Próximas revisiones",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/service-records/due?untilDate=2027-04-01",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": []
+        }
+      }
+    },
+    {
+      "name": "09 - Último mantenimiento",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/service-records/vehicle/{{vehiclePlate}}/latest",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": []
+        }
+      }
+    },
+    {
+      "name": "10 - Eliminar",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/service-records/{{recordId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": []
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "info": {
+    "name": "Project 2 - Shipment Workflow",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "shipmentId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - Crear envío",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"trackingCode\": \"PKG20260001\",\n  \"recipientName\": \"Lucía Gómez\",\n  \"destinationCity\": \"Sevilla\",\n  \"parcelType\": \"SMALL_PACKAGE\",\n  \"specialInstructions\": \"Llamar antes de entregar\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "02 - Listar envíos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments"
+          ]
+        }
+      }
+    },
+    {
+      "name": "03 - Obtener por id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments/{{shipmentId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments",
+            "{{shipmentId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "04 - Actualizar datos",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments/{{shipmentId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments",
+            "{{shipmentId}}"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"trackingCode\": \"IGNORED999\",\n  \"recipientName\": \"Lucía Gómez Pérez\",\n  \"destinationCity\": \"Dos Hermanas\",\n  \"parcelType\": \"MEDIUM_PACKAGE\",\n  \"specialInstructions\": \"Entregar por la tarde\",\n  \"status\": \"DELIVERED\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "05 - Dispatch",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments/{{shipmentId}}/dispatch",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments",
+            "{{shipmentId}}",
+            "dispatch"
+          ]
+        }
+      }
+    },
+    {
+      "name": "06 - Out for delivery",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments/{{shipmentId}}/out-for-delivery",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments",
+            "{{shipmentId}}",
+            "out-for-delivery"
+          ]
+        }
+      }
+    },
+    {
+      "name": "07 - Deliver",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments/{{shipmentId}}/deliver",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments",
+            "{{shipmentId}}",
+            "deliver"
+          ]
+        }
+      }
+    },
+    {
+      "name": "08 - Cancel",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments/{{shipmentId}}/cancel",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments",
+            "{{shipmentId}}",
+            "cancel"
+          ]
+        }
+      }
+    },
+    {
+      "name": "09 - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments/{{shipmentId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments",
+            "{{shipmentId}}"
+          ]
+        }
+      }
+    }
+  ]
+}
